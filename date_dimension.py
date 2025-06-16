@@ -1,5 +1,5 @@
 #import session from smowflake.snowpark package
-from snowflake.snowpark import session
+from snowflake.snowpark import Session
 #import datatypes from smowflake.snowpark package
 from snowflake.snowpark.types import StructType, StructField, DateType, BooleanType
 #import json package to load json files
@@ -39,3 +39,34 @@ dates = [(start_dt + timedelta(days=i)).isoformat()
 hoilday_flags = [[d, is_holiday(d, 'US')] for d in dates]
 
 print(hoilday_flags)
+
+credentials = json.load(open('connection_parameters.json'))
+# create a dictionary with the connection parameters
+connection_parameters_dict = {
+    "account": credentials["account"],
+    "user": credentials["user"],
+    "password": credentials["password"],
+    "role": credentials["role"],
+    "warehouse": credentials["warehouse"],
+    "database": credentials["database"],
+    "schema": credentials["schema"] 
+}  
+
+# create a session object for the Snowpark session
+my_session = Session.builder.configs(connection_parameters_dict).create()
+
+df = my_session.create_dataframe(
+    hoilday_flags,
+    schema=StructType(
+        [StructField("day", DateType()),
+         StructField("holiday_flg", BooleanType())]
+    )
+)
+
+print(df.collect())
+
+#save the date frame to a snowflake table DIM_DATE and overwrite the table if it already exits
+
+df.write.mode("overwrite").save_as_table("DIM_DATE")
+
+my_session.close()
