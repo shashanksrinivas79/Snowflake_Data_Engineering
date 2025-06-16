@@ -16,4 +16,7 @@ connection_parameters_dict = {
 my_session = Session.builder.configs(connection_parameters_dict).create()
 
 print("✅ Session created successfully")
+
+ts = my_session.sql("select current_timestamp()").collect()
+print(ts)
 my_session.close()
