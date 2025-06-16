@@ -1,4 +1,5 @@
 connection_parameters.json
 venv/
 __pycache__/
-*.pyc
+*.pycconnection_parameters.json
+venv/
