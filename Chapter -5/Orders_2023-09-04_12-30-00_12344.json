@@ -1,0 +1,18 @@
+{
+	"Order id": "12345",
+	"Order datetime": "2023-09-04 12:30:00",
+	"Items": [
+		{
+			"Item": "Croissant",
+			"Quantity": 9
+		},
+		{
+			"Item": "Bagel",
+			"Quantity": 5
+		},
+		{
+			"Item": "Bread",
+			"Quantity": 10
+		}
+	]
+}
