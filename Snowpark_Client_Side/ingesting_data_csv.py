@@ -29,9 +29,9 @@ print(result)
 
 schema_for_csv = StructType(
     [StructField("Customer", StringType()),
-     StructField("Order date", DateType()),
-     StructField("Delivery date", DateType()),
-     StructField("Baked good type", StringType()),
+     StructField("Order_date", DateType()),
+     StructField("Delivery_date", DateType()),
+     StructField("Baked_good_type", StringType()),
      StructField("Quantity", DecimalType())]
 )
 

@@ -38,7 +38,7 @@ dates = [(start_dt + timedelta(days=i)).isoformat()
 #with output of is_holiday() function
 hoilday_flags = [[d, is_holiday(d, 'US')] for d in dates]
 
-print(hoilday_flags)
+#print(hoilday_flags)
 
 credentials = json.load(open('connection_parameters.json'))
 # create a dictionary with the connection parameters
@@ -63,7 +63,7 @@ df = my_session.create_dataframe(
     )
 )
 
-print(df.collect())
+#print(df.collect())
 
 #save the date frame to a snowflake table DIM_DATE and overwrite the table if it already exits
 

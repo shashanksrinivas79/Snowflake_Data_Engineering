@@ -3,3 +3,4 @@ venv/
 __pycache__/
 *.pycconnection_parameters.json
 venv/
+create_session.py
